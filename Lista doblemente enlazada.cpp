@@ -8,24 +8,6 @@ struct Nodo{
 	struct Nodo *anterior;
 }*primero,*ultimo;
 
-void insertarNodo();
-void desplegarListaPU();
-void desplegarListaUP();
-
-int main(){
-	insertarNodo();
-	insertarNodo();
-	insertarNodo();
-	insertarNodo();
-	insertarNodo();
-	cout<<"Lista del primer a ultimo elemento"<<endl;
-	desplegarListaPU();
-	cout<<"\n\nLista del ultimo al primer elemento"<<endl;
-	desplegarListaUP();
-
-	return 0;
-}
-
 void insertarNodo(){
 	Nodo *nuevo= new Nodo();
 	cout<<"Ingresa el valor del Nodo: ";
@@ -43,6 +25,7 @@ void insertarNodo(){
 		ultimo=nuevo;
 	}
 	cout<<"\nNodo agregado\n"<<endl;
+	delete ultimo;
 }
 
 void desplegarListaPU(){
@@ -69,4 +52,36 @@ void desplegarListaUP(){
 	}else{
 		cout<<"\nLa lista se encuentra vacia\n\n";
 	}
+}
+
+void menu(){
+    cout<<"\nMenú de opciones \n"<<endl;
+    cout<<"1 Insertar nodo \n"<<"2 Mostrar listas \n"<<endl;
+    cout<<"Elige una opción del menú: \n"<<endl;
+}
+Nodo l1;
+int main(){
+	char *locale;
+    locale=setlocale(LC_ALL,"");
+	int opcion;
+	int repetir=true;
+	while(repetir){
+		system("CLS");
+		menu();
+		cin>>opcion;
+		if(opcion==1){
+            system("CLS");
+			insertarNodo();	
+		}else if(opcion==2){
+			system("CLS");
+			cout<<"Lista del primer a ultimo elemento"<<endl;
+			desplegarListaPU();
+			cout<<"\n\nLista del ultimo al primer elemento"<<endl;
+			desplegarListaUP();
+			system ("pause");
+		}else {
+			break;
+		}
+	}
+	return 0;
 }
